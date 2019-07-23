@@ -29,6 +29,8 @@ def encoder(art):
 
         codify += str(counter) + previous_character
         return codify
+    #counter= "{:02d}".format(codify)
+    
 #The function for decoding
 def decoder(data):  
     decode = ''
@@ -52,7 +54,7 @@ while True:
                       D: Convert to RLE
                       Q: Quit
                       Please enter a letter corresponding to your choice: """)
-    if choice == "A" or choice =="a":
+    if choice == "A" or choice == "a":
         while True:
             RLE = int(input('How many lines of RLE compressed data do you want to enter:'))
             if RLE > 1:
@@ -62,19 +64,25 @@ while True:
             else:
                 print ('Please enter a value greater than 1')
                 time.sleep(0.1)
-    elif choice == "B" or choice =="b":
+    elif choice == "B" or choice == "b":
         art = input('Enter file name as _____.txt: ')
         s = open(art).read()
         print(s)
-    elif choice == "C" or choice =="c":
+    elif choice == "C" or choice == "c":
         rle = input('Enter file name as _____.txt: ')
         decoding=decoder(rle)
         print(decoding)
-    elif choice=="D" or choice=="d":
-        ConverttoRLE()
+    elif choice == "D" or choice == "d":
+        Ascii = input('Enter file name as _____.txt: ')
+        encoding = encoder(Ascii)
+        file = open("NewRLE.txt","w+")
+        file.write(encoding)
+        file.close
+ 
+
     elif choice=="Q" or choice=="q":
         print('Goodbye')
-        sys.exit
+        quit
     else:
         print("You must only select either A,B,C, or D.")
         print("Please try again")
